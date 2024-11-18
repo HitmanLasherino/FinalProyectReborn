@@ -2,7 +2,6 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
-
 dotenv.config();
 //ola
 // Asegurar la creación de la base de datos
@@ -13,16 +12,15 @@ export async function ensureDatabaseExists() {
             user: process.env.DB_USERNAME,
             password: process.env.DB_PASSWORD,
         });
-
         await connection.query(`CREATE DATABASE IF NOT EXISTS \`${process.env.DB_DATABASE}\``);
         console.log(`Base de datos '${process.env.DB_DATABASE}' verificada o creada.`);
         await connection.end();
-    } catch (error) {
+    }
+    catch (error) {
         console.error("Error al verificar o crear la base de datos:", error);
         process.exit(1);
     }
 }
-
 // Configuración del DataSource
 export const AppDataSource = new DataSource({
     type: "mysql",

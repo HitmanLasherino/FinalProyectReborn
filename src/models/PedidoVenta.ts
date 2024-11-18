@@ -1,3 +1,4 @@
+// PedidoVenta.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, OneToMany } from "typeorm";
 import { Cliente } from "./Cliente.js";
 import { PedidoVentaDetalle } from "./PedidoVentaDetalle.js";
@@ -23,7 +24,9 @@ export class PedidoVenta {
     @Column({ type: "decimal", precision: 10, scale: 2, name: "totalPedido", nullable: false })
     totalPedido!: number;
 
-    // Relación explícita con el esquema definido
+    @Column({ type: "int", name: "borrado", default: 0 })
+    borrado!: number;
+
     @OneToMany(() => PedidoVentaDetalle, (detalle) => detalle.pedidoVenta, { lazy: true })
     detalles!: Promise<PedidoVentaDetalle[]>;
 }
