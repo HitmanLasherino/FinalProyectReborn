@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos de Venta</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+
+<body>
+    <div id="app">
+        <h1>Gestión de Pedidos de Venta</h1>
+
+        <!-- Lista de Pedidos -->
+        <section>
+            <h2>Lista de Pedidos</h2>
+            <table id="pedidosTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Nro. Comprobante</th>
+                        <th>Forma de Pago</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="pedido-list">
+                    <!-- Los pedidos se cargarán aquí -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Formulario de Alta/Edición -->
+        <section>
+            <h2>Alta/Edición de Pedido</h2>
+            <form id="pedidoForm">
+                <label for="cliente-select">Cliente:</label>
+                <select id="cliente-select" required></select>
+
+                <label for="fecha-pedido">Fecha del Pedido:</label>
+                <input type="date" id="fecha-pedido" required>
+
+                <label for="nro-comprobante">Número de Comprobante:</label>
+                <input type="number" id="nro-comprobante" required>
+
+                <label for="forma-pago">Forma de Pago:</label>
+                <input type="text" id="forma-pago" required>
+
+                <button type="button" id="guardar-pedido">Guardar Pedido</button>
+            </form>
+        </section>
+
+        <!-- Sección para Agregar Productos -->
+        <section>
+            <h2>Agregar Productos</h2>
+            <div id="productosContainer"></div>
+            <button type="button" id="addProductoBtn">Agregar Producto</button>
+            <label for="totalPedido">Total del Pedido:</label>
+            <input type="text" id="totalPedido" readonly>
+        </section>
+
+        <!-- Sección de Búsqueda -->
+        <section>
+            <h2>Buscar Pedido</h2>
+            <form id="buscarForm">
+                <label for="buscarNumero">Buscar por Número de Comprobante:</label>
+                <input type="number" id="buscarNumero">
+                <button type="button" id="buscarNumeroBtn">Buscar</button>
+
+                <label for="buscarFechaInicio">Buscar por Rango de Fechas:</label>
+                <input type="date" id="buscarFechaInicio">
+                <input type="date" id="buscarFechaFin">
+                <button type="button" id="buscarFechaBtn">Buscar</button>
+            </form>
+            <div id="resultadoBusqueda"></div>
+        </section>
+    </div>
+
+    <!-- Script Compilado -->
+    <script src="./dist/main.js"></script>
+</body>
+
+</html>
